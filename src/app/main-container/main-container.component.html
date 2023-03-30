@@ -1,0 +1,81 @@
+<div class="blank_div">
+  <div class="btns">
+  <div class="em">
+    <b>Employees </b>
+    <span class="count">100</span>
+  </div>
+  
+             
+    <input type="text" placeholder=" Search" name="search" style="padding:0px; height: 30px; margin-top: 22px;  margin-left: -150px; font-family: poppins; border: 2px solid #E8E9EE;">
+           
+    <button style="background-color: #328DF6; height: 36px; width: 67px;
+     margin-top: 20px; border: none; border-radius: 4px; margin-right: 70px;margin-left: 16px; color:#ffffff; display: flex; align-items: center;">
+      <img src="assets/plus.svg" /> Add
+    </button>
+
+    <button style="background-color: #ffffff; height: 36px; width: 38px; border: 1.4px solid #8591A2; border-radius: 4px; margin-top: 20px; margin-right: 10px;     margin-left: -56px; ">
+      <img src="assets/filter.svg" class="" />
+    </button>
+
+    
+    <button style="background-color: #ffffff; height: 36px; width: 36px; border: 1.4px solid #8591A2; border-radius: 4px; margin-top: 20px; margin-right: 20px;">
+        <img src="assets/idCard.svg" class="" />
+    </button>
+
+    <button style="background-color: #328DF6; height: 36px; width: 36px; border: 1px solid #8591A2; border-radius: 4px; margin-top: 20px; margin-left:-9px">
+      <img src="assets/table.svg" class="" />
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <!-- role Column -->
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef>Role</th>
+    <td mat-cell *matCellDef="let element">{{ element.role }}</td>
+  </ng-container>
+
+  <!-- type Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Type</th>
+    <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+  </ng-container>
+
+  <!-- mobile Column -->
+  <ng-container matColumnDef="mobile">
+    <th mat-header-cell *matHeaderCellDef>Mobile Number</th>
+    <td mat-cell *matCellDef="let element">{{ element.mobile }}</td>
+  </ng-container>
+
+  <!-- email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email Address</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+
+  <!-- skills Column -->
+
+  <ng-container matColumnDef="skills">
+    <th mat-header-cell *matHeaderCellDef>Skills</th>
+    <td mat-cell *matCellDef="let element">{{ element.skills }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<div class="blank_div1">
+  <mat-paginator [length]="100" [pageSize]="9"> </mat-paginator>
+</div>
+
+<!-- (page)="onPageChange($event)" -->

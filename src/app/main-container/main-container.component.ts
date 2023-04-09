@@ -1,34 +1,69 @@
 import { Component } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-export interface PeriodicElement {
-  name: string;
-  role: string;
-  type: string;
-  mobile: string;
-  email: string;
-  skills: string;
-}
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: 'Vivek Sharma',role:'Software Engineer', type: 'Intern', mobile: '+91 6230543723' , email: 'Vikas.S@iauro.com', skills: 'Wireframes    Prototypes'},
-  { name: 'Marvin MCKinney', role:'Software Engineer', type: 'Intern', mobile: '+91 6230543723' , email: 'Vikas.S@iauro.com', skills: 'Wireframes    Prototypes'},
-  { name: 'Kathryn Murphy',role:'Software Engineer', type: 'Intern', mobile: '+91 6230543723' , email: 'Vikas.S@iauro.com', skills: 'Wireframes    Prototypes' },
-  { name: 'Ariene McCoy',role:'Software Engineer', type: 'Intern', mobile: '+91 6230543723' , email: 'Vikas.S@iauro.com', skills: 'Wireframes    Prototypes'},
-  { name: 'Brookiyn Simmons', role:'Software Engineer', type: 'Intern', mobile: '+91 6230543723' , email: 'Vikas.S@iauro.com', skills: 'Wireframes    Prototypes'},
-  { name: 'Cody Fisher',role:'Software Engineer', type: 'Intern', mobile: '+91 6230543723' , email: 'Vikas.S@iauro.com', skills:'Wireframes    Prototypes' },
-  { name: 'Savannah Nguyen', role:'Software Engineer', type: 'Intern', mobile: '+91 6230543723' , email: 'Vikas.S@iauro.com', skills: 'Wireframes    Prototypes'},
-  { name: 'Wade Warren',role:'Software Engineer', type: 'Intern', mobile: '+91 6230543723' , email: 'Vikas.S@iauro.com', skills:'Wireframes    Prototypes' },
-  { name: 'Ronald Richards',role:'Software Engineer', type: 'Intern', mobile: '+91 6230543723' , email: 'Vikas.S@iauro.com', skills:'Wireframes    Prototypes' },
-];
+import { DetailsService } from '../details.service';
+import { DrawerComponent } from '../drawer/drawer.component';
+import { UpdateContainerComponent } from '../update-container/update-container.component';
 
 @Component({
   selector: 'app-main-container',
   templateUrl: './main-container.component.html',
-  styleUrls: ['./main-container.component.scss']
+  styleUrls: ['./main-container.component.scss'],
 })
 export class MainContainerComponent {
-  displayedColumns: string[] = ['name', 'role', 'type', 'mobile', 'email', 'skills'];
-  dataSource = ELEMENT_DATA;
+  collection: any = [];
 
+  constructor(private details: DetailsService, public dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.details.getList().subscribe((result) => {
+      console.warn(result);
+      this.collection = result;
+    });
+  }
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(DrawerComponent, {
+      width:'700px',
+      height: '100%',
+      maxHeight: 'none',
+      position: { right: '0' },
+      // border-radius:'0px',
+
+      enterAnimationDuration,
+      exitAnimationDuration,
+      // panelClass: 'no-radius-dialog'
+    });
+  }
+
+
+  openDialog1(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    id: number
+  ): void {
+    this.dialog.open(UpdateContainerComponent, {
+      width:'700px',
+      height: '100%',
+      maxHeight: 'none',
+      position: { right: '0' },
+      // border-radius:'0px',
+
+      enterAnimationDuration,
+      exitAnimationDuration,
+      // panelClass: 'no-radius-dialog'
+      data: {id},
+    });
+  }
+
+  deleteDetails(item: any) {
+    this.collection.splice(item - 1, 1);
+    this.details.deleteDetails(item).subscribe((result) => {
+      console.warn('result', result);
+    });
+  }
+  
 }

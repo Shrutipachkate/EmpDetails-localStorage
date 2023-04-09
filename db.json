@@ -1,0 +1,106 @@
+{
+  "employeedetails": [
+    {
+      "name": "Vivek Sharma",
+      "dob": null,
+      "lang": null,
+      "skills": "Wireframes    Prototypes",
+      "role": "Software Engineer",
+      "gender": null,
+      "email": "Vikas.S@iauro.com",
+      "mobile": "+91 6230543723",
+      "city": null,
+      "hometown": null,
+      "address": null,
+      "type": "Intern",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Marvin MCKinney",
+      "role": "UI/UX designer",
+      "type": "Permanent",
+      "mobile": "+91 6230543723",
+      "email": "Vikas.S@iauro.com",
+      "skills": "Wireframes    Prototypes"
+    },
+    {
+      "id": 3,
+      "name": "Kathryn Murphy",
+      "role": "Software Engineer",
+      "type": "Intern",
+      "mobile": "+91 6230543723",
+      "email": "Vikas.S@iauro.com",
+      "skills": "Wireframes    Prototypes"
+    },
+    {
+      "id": 4,
+      "name": "Ariene McCoy",
+      "role": "UI/UX designer",
+      "type": "Permanent",
+      "mobile": "+91 6230543723",
+      "email": "Vikas.S@iauro.com",
+      "skills": "Wireframes    Prototypes"
+    },
+    {
+      "id": 5,
+      "name": "Brookiyn Simmons",
+      "role": "Software Engineer",
+      "type": "Intern",
+      "mobile": "+91 6230543723",
+      "email": "Vikas.S@iauro.com",
+      "skills": "Wireframes    Prototypes"
+    },
+    {
+      "id": 6,
+      "name": "Cody Fisher",
+      "role": "UI/UX designer",
+      "type": "Permanent",
+      "mobile": "+91 6230543723",
+      "email": "Vikas.S@iauro.com",
+      "skills": "Wireframes    Prototypes"
+    },
+    {
+      "id": 7,
+      "name": "Savannah Nguyen",
+      "role": "Software Engineer",
+      "type": "Intern",
+      "mobile": "+91 6230543723",
+      "email": "Vikas.S@iauro.com",
+      "skills": "Wireframes    Prototypes"
+    },
+    {
+      "id": 8,
+      "name": "Wade Warren",
+      "role": "UI/UX designer",
+      "type": "Permanent",
+      "mobile": "+91 6230543723",
+      "email": "Vikas.S@iauro.com",
+      "skills": "Wireframes    Prototypes"
+    },
+    {
+      "id": 9,
+      "name": "Ronald Richards",
+      "role": "Software Engineer",
+      "type": "Intern",
+      "mobile": "+91 6230543723",
+      "email": "Vikas.S@iauro.com",
+      "skills": "Wireframes    Prototypes"
+    },
+    {
+      "name": "Kalyani Amrutkar",
+      "dob": "2001-01-09",
+      "lang": "English",
+      "skills": "NodeJs, NestJs",
+      "role": "Backend Developer",
+      "gender": "Female",
+      "email": "test@gmail.com",
+      "mobile": 9878675645,
+      "city": "Pune",
+      "hometown": "Aurangabad",
+      "address": "Pune",
+      "type": "Permanent",
+      "id": 10
+    }
+  ]
+}

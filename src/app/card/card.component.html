@@ -1,43 +1,24 @@
 <div class="container">
-<!-- <mat-card class="card" >
-    <mat-card-header>
-      <mat-card-subtitle>All Employees</mat-card-subtitle>
-    </mat-card-header>
-    <div> </div>
-  </mat-card>
+  <div class="content">
 
-  <mat-card class="card1" >
-    <mat-card-header>
-      <mat-card-subtitle>Permanent</mat-card-subtitle>
-    </mat-card-header>
-    <div></div>
-  </mat-card>
-
-  <mat-card class="card2" >
-    <mat-card-header>
-      <mat-card-subtitle>Intern</mat-card-subtitle>
-    </mat-card-header>
-    <div></div>
-  </mat-card> -->
-  <div class="content" >
-  <div class="card">All Employees
-    <div class="number">100 </div>
-    <div> <img src="assets/card1.svg" alt="Avatar" class="card-img1" > </div>
+    <div class="card firstcard">
+      <div class="text">All Employees</div>
+      <div class="number">{{collection.length}}</div>
+      
+      <div><img src="assets/card1.svg" alt="Avatar" class="card-img1" /></div>
     </div>
-   
-  <div class="card1">Permanent
-    <div class="number">70 </div>
-    <div> <img src="assets/card2.svg" alt="Avatar" class="card-img1" > </div>
+
+    <div class="card">
+      <div class="text">Permanent</div>
+      <div class="number">{{ permanentCount }}</div>
+      <div><img src="assets/card2.svg" alt="Avatar" class="card-img1" /></div>
+    </div>
+
+    <div class="card">
+      <div class="text">Intern</div>
+      <div class="number">{{ internCount}}</div>
+      <div><img src="assets/card3.svg" alt="Avatar" class="card-img1" /></div>
+    </div>
+
   </div>
-
-  <div class="card2">Intern</div>
-  <div class="number intern">30 </div>
-  <div> <img src="assets/card3.svg" alt="Avatar" class="card-img2" > </div>
 </div>
-
-</div>
-
-<!-- <app-main-container></app-main-container> -->
-
-
-

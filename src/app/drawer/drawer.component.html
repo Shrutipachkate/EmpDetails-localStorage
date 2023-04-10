@@ -1,11 +1,9 @@
-<h2 class="employee-details" style="padding-left: 20px; margin-top: 0px ; font-family: poppins;">
-  Add New Employee
-</h2>
+<h2 class="employee-details">Add New Employee</h2>
 <hr class="hori" />
 <mat-tab-group>
   <mat-tab label="Personal & Contact Details">
     <div class="div1">
-      <h2 class="employee-details" style="padding-left: 20px; margin-top: 10px ; font-family: poppins;">Personal Details</h2>
+      <h2 class="employee-details">Personal Details</h2>
       <div class="personal-details">
         <form [formGroup]="addDetails" (ngSubmit)="collectDetails()">
           <div class="details-row">
@@ -17,6 +15,12 @@
                 placeholder="Enter name"
                 formControlName="name"
               />
+              <span
+                class="validation"
+                *ngIf="name && name.invalid && name.touched"
+                >Name is Invalid*</span
+              >
+              <br />
             </div>
             <div class="form-group">
               <label>Date Of Birth</label>
@@ -25,7 +29,11 @@
                 class="form-control"
                 placeholder="Date Of Birth"
                 formControlName="dob"
+                required="This field is required*"
               />
+              <span class="validation" *ngIf="dob && dob.invalid && dob.touched"
+                >This field is required*</span
+              >
             </div>
           </div>
 
@@ -59,43 +67,67 @@
                 placeholder="Role"
                 formControlName="role"
               />
+              <span
+                class="validation"
+                *ngIf="role && role.invalid && role.touched"
+                >Role is required*</span
+              >
+              <br />
             </div>
-            <div class="form-group">
-              <label>Gender</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Gender"
-                formControlName="gender"
-              />
+            <div class="form-group col-md-4">
+              <label for="inputGender">Gender</label>
+              <select id="inputGender" class="form-control">
+                <option disabled selected>Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
             </div>
           </div>
         </form>
       </div>
     </div>
 
-    <div class="div1" >
-      <h2 class="employee-details" style="padding-left: 20px; margin-top: 10px ; font-family: poppins;">Contact Details</h2>
+    <div class="div1">
+      <h2
+        class="employee-details"
+        style="padding-left: 20px; margin-top: 10px; font-family: poppins"
+      >
+        Contact Details
+      </h2>
       <form [formGroup]="addDetails" (ngSubmit)="collectDetails()">
-        <div class="details-row">
-          <div class="form-group">
-            <label>Email Address</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Email Address"
-              formControlName="email"
-            />
-          </div>
+        <div class="personal-details">
+          <div class="details-row">
+            <div class="form-group">
+              <label>Email Address</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email Address"
+                formControlName="email"
+              />
+              <span
+                class="validation"
+                *ngIf="email && email.invalid && email.touched"
+                >Email is Invalid*</span
+              >
+              <br />
+            </div>
 
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Phone Number"
-              formControlName="mobile"
-            />
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Phone Number"
+                formControlName="mobile"
+              />
+              <span
+                class="validation"
+                *ngIf="mobile && mobile.invalid && mobile.touched"
+                >Phone Number is required*</span
+              >
+              <br />
+            </div>
           </div>
         </div>
 
@@ -132,28 +164,66 @@
             />
           </div>
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Type</label>
             <input
               type="text"
               class="form-control"
               placeholder="Type"
               formControlName="type"
+              required
             />
+            <span
+              class="validation"
+              *ngIf="type && type.invalid && type.touched"
+              >Type is required*</span
+            >
+            <br />
+          </div> -->
+
+          <div class="form-group col-md-4">
+            <label for="inputType">Type</label>
+            <select
+              id="inputType"
+              class="form-control"
+              placeholder="Type"
+              required
+            >
+              <option value="option" disabled selected>Type</option>
+              <option>Intern</option>
+              <option>Permanent</option>
+            </select>
+
+            <span
+              class="validation"
+              *ngIf="type && type.invalid && type.touched"
+              >Type is required*</span
+            >
           </div>
         </div>
-      
 
-      <button  type="submit" mat-stroked-button color="primary" style=" margin: 25px; margin-left: 450px;" mat-dialog-close>Cancel</button>
-      <button type="submit" mat-raised-button color="primary" mat-dialog-close>Add</button>
-
-    
+        <button
+          class="cancel-btn"
+          type="submit"
+          mat-stroked-button
+          color="primary"
+          mat-dialog-close
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          [disabled]="addDetails.invalid"
+          mat-raised-button
+          color="primary"
+          mat-dialog-close
+        >
+          Add
+        </button>
       </form>
     </div>
   </mat-tab>
-  <mat-tab label="Education & Work Experience"> Nothing to fill </mat-tab>
-  <mat-tab label="Documents"> Documents </mat-tab>
+  <mat-tab label="Education & Work Experience" disabled> </mat-tab>
+  <mat-tab label="Documents" disabled> Documents </mat-tab>
 </mat-tab-group>
-
-
 

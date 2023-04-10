@@ -18,16 +18,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DrawerComponent } from './drawer/drawer.component';
 import { FormsModule } from '@angular/forms';
-import { MatDialogActions } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { UpdateContainerComponent } from './update-container/update-container.component';
-import { MatOption } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,10 +34,7 @@ import { MatOption } from '@angular/material/core';
     CardComponent,
     MainContainerComponent,
     DrawerComponent,
- 
     UpdateContainerComponent,
-
-   
   ],
   imports: [
     BrowserModule,
@@ -59,10 +54,10 @@ import { MatOption } from '@angular/material/core';
     MatButtonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatTabsModule
-  
+    MatTabsModule,
+    MatSelectModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

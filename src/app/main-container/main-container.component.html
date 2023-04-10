@@ -2,17 +2,13 @@
 <app-toolbar></app-toolbar>
 <app-card></app-card>
 <div class="blank_div">
-
-  <!-- <div class="em"> -->
-    <div class="em">
-    <b>Employees </b> <div class="count"> {{collection.length}}</div>
+  <div class="em">
+    <b>Employees </b>
+    <div class="count">{{ collection.length }}</div>
   </div>
-  <!-- </div> -->
 
   <div class="btns">
-    <input class="searchbar" type="text"  placeholder="Search" name="search" />
-    <!-- <mat-icon>search</mat-icon> -->
- 
+    <input class="searchbar" type="text" placeholder="Search" name="search" />
 
     <button class="Add-user" (click)="openDialog('0ms', '0ms')">
       <img src="assets/plus.svg" /> Add
@@ -32,9 +28,7 @@
   </div>
 </div>
 
-<!-- <div class="table-responsive" style="height: 300px; overflow-y: auto;"> -->
 <table class="table">
-
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -43,9 +37,8 @@
       <th scope="col">Mobile Number</th>
       <th scope="col">Email Address</th>
       <th scope="col">Skills</th>
-      <th> </th>
       <th></th>
-      
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -63,22 +56,17 @@
           style="font-size: 20px; color: rgb(186, 185, 185); margin-top: 10px"
         ></i>
       </td>
-      <!-- <td> <a routerLink="/update-container/{{item.id}}">
-        <i class="fa fa-edit" style="font-size:20px; color:rgb(186, 185, 185); margin-top: 10px;"></i> </a>
-      </td> -->
+
       <td>
-        <!-- <a routerLink="/update-container/{{ item.id }}"> -->
-          <i
-            class="fa fa-edit"
-            (click)="openDialog1('0ms', '0ms', item.id)"
-            style="font-size: 20px; color: rgb(186, 185, 185); margin-top: 10px"
-          ></i>
-        <!-- </a> -->
+        <i
+          class="fa fa-edit"
+          (click)="openDialog1('0ms', '0ms', item.id)"
+          style="font-size: 20px; color: rgb(186, 185, 185); margin-top: 10px"
+        ></i>
       </td>
     </tr>
   </tbody>
 </table>
-<!-- </div> -->
 
 <div class="blank_div1">
   <mat-paginator

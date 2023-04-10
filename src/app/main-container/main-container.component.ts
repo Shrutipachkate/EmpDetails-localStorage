@@ -27,18 +27,15 @@ export class MainContainerComponent {
     exitAnimationDuration: string
   ): void {
     this.dialog.open(DrawerComponent, {
-      width:'700px',
+      width: '621px',
       height: '100%',
       maxHeight: 'none',
       position: { right: '0' },
-      // border-radius:'0px',
 
       enterAnimationDuration,
       exitAnimationDuration,
-      // panelClass: 'no-radius-dialog'
     });
   }
-
 
   openDialog1(
     enterAnimationDuration: string,
@@ -46,16 +43,15 @@ export class MainContainerComponent {
     id: number
   ): void {
     this.dialog.open(UpdateContainerComponent, {
-      width:'700px',
+      width: '621px',
       height: '100%',
       maxHeight: 'none',
       position: { right: '0' },
-      // border-radius:'0px',
 
       enterAnimationDuration,
       exitAnimationDuration,
-      // panelClass: 'no-radius-dialog'
-      data: {id},
+
+      data: { id },
     });
   }
 
@@ -65,5 +61,4 @@ export class MainContainerComponent {
       console.warn('result', result);
     });
   }
-  
 }

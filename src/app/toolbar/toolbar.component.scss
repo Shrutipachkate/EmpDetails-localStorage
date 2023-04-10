@@ -1,35 +1,28 @@
-.responsive-icon{
-    display: flex;
-    // flex-direction: row;
-    justify-content: end;
+.responsive-icon {
+  display: flex;
+  justify-content: end;
   margin-top: 1px;
   margin-bottom: 6px;
 
   margin-left: 4.7em;
   height: 4em;
   width: 95%;
-  gap:1em;
+  gap: 1em;
 }
-.toolbar{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color:white;
-    border-bottom: 1px solid #E8E9EE;
-    height: 45px;
-    width: 100%;
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: white;
+  border-bottom: 1px solid #e8e9ee;
+  height: 45px;
+  width: 100%;
 }
-.bell-icon{
-//     margin-top: 9px;
-    width: 28px;
-    height: 28px;
-//     margin-left: 58em;
+.bell-icon {
+  width: 28px;
+  height: 28px;
 }
-.profile-icon{
-//     margin-top: 9px;
-    width: 28px;
-    height: 28px;
-//     margin-left: 1em;
-    
-   
+.profile-icon {
+  width: 28px;
+  height: 28px;
 }

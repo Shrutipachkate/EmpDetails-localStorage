@@ -10,6 +10,7 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./update-container.component.scss'],
 })
 export class UpdateContainerComponent {
+
   editDetails = new FormGroup({
     name: new FormControl(''),
     dob: new FormControl(''),

@@ -26,13 +26,23 @@ export class DrawerComponent implements OnInit {
       Validators.required,
       Validators.maxLength(10),
       Validators.minLength(10),
-      Validators.pattern('[(+91) 0-9]*'),
+      Validators.pattern(' [0-9]*'),
+      // this.indianCodeValidator,
     ]),
     city: new FormControl(''),
     hometown: new FormControl(''),
     address: new FormControl(''),
     type: new FormControl('Type', [Validators.required]),
   });
+
+
+  // indianCodeValidator(control: FormControl) {
+  //   if (control.value && !control.value.startsWith('+91')) {
+  //     return { indianCode: true };
+  //   }
+  //   return null;
+  // }
+
   constructor(private details: DetailsService) {}
   ngOnInit(): void {}
   collectDetails() {

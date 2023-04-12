@@ -3,8 +3,7 @@
     background-color: #ffffff;
     padding-left: 20px; 
     margin-top: 10px; 
-    font-family: poppins
-  
+    font-family: poppins;
 }
 .details-row{
     display: flex;
@@ -15,50 +14,25 @@
 .form-group{
     width: 18em;
     height: 40px;
-    // margin-top: -3px;
 }
 .form-control{
     width: 100%;
     height: 100%;
- 
-    
-    // margin-top: -2%;
-}
-
-.btns{
-    margin-left: 37em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // height: 50px;
-    // flex-direction: row;
-    // justify-content:flex-end;
-    // width: 20px;
-}
-.btn{
-    height: 40px;
-    // margin-left: 12em;
 }
 .personal-details{
     padding-top: 0px;
     margin-top: -2.5em;
     border-color: #E8E9EE;
+    
 }
-.div1{
+.details-container{
     background-color: rgb(255, 255, 255);
     border: 1px solid rgba(232, 233, 238, 1);
     height: 21.5em;
     width: 560px;
     margin-top: 6px;
     margin-left: 16px;
-    font-family: poppins;
-    
-}
-.hori{
-    margin: 0px 0;
-    color:solid rgba(232, 233, 238, 1);
-    height: 1px;
-
+    font-family: poppins; 
 }
 .h2{
     padding-left: 10px;

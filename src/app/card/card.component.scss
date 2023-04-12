@@ -1,3 +1,10 @@
+.container{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 14px 0px;
+  margin-left: 5%;
+}
 .content {
   display: flex;
   justify-content: space-evenly;
@@ -8,20 +15,12 @@
   flex-wrap: wrap;
   gap: 15px;
 }
-.container {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  padding: 14px 0px;
-  margin-left: 5.0%;
-}
 .card {
   width: 370px;
   height: 90px;
   border-radius: 4px;
   border: none;
 }
-
 .number {
   color: rgba(50, 141, 246, 1);
   font-family: "Poppins";
@@ -30,7 +29,7 @@
   font-weight: bold;
   padding-left: 15px;
 }
-.card-img1 {
+.card-img {
   margin-left: 19.5em;
   margin-top: -4.2em;
   width: 60px;
@@ -39,3 +38,11 @@
   padding-top: 8px;
   padding-left: 15px;
 }
+
+
+
+
+
+
+
+

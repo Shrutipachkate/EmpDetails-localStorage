@@ -11,19 +11,19 @@
     <input class="searchbar" type="text" placeholder="Search" name="search" />
 
     <button class="Add-user" (click)="openDialog('0ms', '0ms')">
-      <img src="assets/plus.svg" /> Add
+      <img [src]="addBtnImagePath" alt="addBtnImage" /> Add
     </button>
 
     <button class="filter">
-      <img src="assets/filter.svg" />
+      <img [src]="filterImagePath" alt="filterImage" />
     </button>
 
     <button class="idcard">
-      <img src="assets/idCard.svg" />
+      <img [src]="idCardImagePath" alt="idCardImage" />
     </button>
 
     <button class="table1">
-      <img src="assets/table.svg" />
+      <img [src]="tableImagePath" alt="tableImage" />
     </button>
   </div>
 </div>

@@ -1,24 +1,23 @@
 <div class="container">
-  <div class="content">
 
+  <div class="content">
     <div class="card firstcard">
       <div class="text">All Employees</div>
-      <div class="number">{{collection.length}}</div>
-      
-      <div><img src="assets/card1.svg" alt="Avatar" class="card-img1" /></div>
+      <div class="number">{{ collection.length }}</div>
+      <div><img [src]="card1ImagePath" alt="AllEmployee" class="card-img" /></div>
     </div>
 
     <div class="card">
       <div class="text">Permanent</div>
       <div class="number">{{ permanentCount }}</div>
-      <div><img src="assets/card2.svg" alt="Avatar" class="card-img1" /></div>
+      <div><img [src]="card2ImagePath" alt="Permanent" class="card-img" /></div>
     </div>
 
     <div class="card">
       <div class="text">Intern</div>
-      <div class="number">{{ internCount}}</div>
-      <div><img src="assets/card3.svg" alt="Avatar" class="card-img1" /></div>
+      <div class="number">{{ internCount }}</div>
+      <div><img [src]="card3ImagePath" alt="Intern" class="card-img" /></div>
     </div>
-
   </div>
+
 </div>

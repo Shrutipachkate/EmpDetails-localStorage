@@ -26,6 +26,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { UpdateContainerComponent } from './update-container/update-container.component';
 import { MatSelectModule } from '@angular/material/select';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { MatSelectModule } from '@angular/material/select';
     MainContainerComponent,
     DrawerComponent,
     UpdateContainerComponent,
+
   ],
   imports: [
     BrowserModule,

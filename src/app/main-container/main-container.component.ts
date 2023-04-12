@@ -11,6 +11,11 @@ import { UpdateContainerComponent } from '../update-container/update-container.c
   styleUrls: ['./main-container.component.scss'],
 })
 export class MainContainerComponent {
+  addBtnImagePath: string = 'assets/plus.svg';
+  filterImagePath: string = 'assets/filter.svg';
+  idCardImagePath: string = 'assets/idCard.svg';
+  tableImagePath: string = 'assets/table.svg';
+
   collection: any = [];
 
   constructor(private details: DetailsService, public dialog: MatDialog) {}

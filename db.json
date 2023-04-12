@@ -1,21 +1,6 @@
 {
   "employeedetails": [
     {
-      "name": "Vivek Sharma",
-      "dob": null,
-      "lang": null,
-      "skills": "Wireframes    Prototypes",
-      "role": "Software Engineer",
-      "gender": null,
-      "email": "Vikas.S@iauro.com",
-      "mobile": "+91 6230543723",
-      "city": null,
-      "hometown": null,
-      "address": null,
-      "type": "Intern",
-      "id": 1
-    },
-    {
       "id": 2,
       "name": "Marvin MCKinney",
       "role": "UI/UX designer",

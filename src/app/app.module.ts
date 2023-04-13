@@ -23,7 +23,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
-import { UpdateContainerComponent } from './update-container/update-container.component';
 import { MatSelectModule } from '@angular/material/select';
 
 
@@ -35,8 +34,6 @@ import { MatSelectModule } from '@angular/material/select';
     CardComponent,
     MainContainerComponent,
     DrawerComponent,
-    UpdateContainerComponent,
-
   ],
   imports: [
     BrowserModule,

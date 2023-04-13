@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-
+import { MatDialog } from '@angular/material/dialog';
 import { DetailsService } from '../details.service';
 import { DrawerComponent } from '../drawer/drawer.component';
-import { UpdateContainerComponent } from '../update-container/update-container.component';
 
 @Component({
   selector: 'app-main-container',
@@ -27,36 +25,40 @@ export class MainContainerComponent {
     });
   }
 
-  openDialog(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string
-  ): void {
-    this.dialog.open(DrawerComponent, {
+  openAddEmpForm() {
+    const dialogRef = this.dialog.open(DrawerComponent, {
       width: '621px',
       height: '100%',
       maxHeight: 'none',
       position: { right: '0' },
-
-      enterAnimationDuration,
-      exitAnimationDuration,
+      
+    });
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.collection.push(val);
+        }
+      },
     });
   }
-
-  openDialog1(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string,
-    id: number
-  ): void {
-    this.dialog.open(UpdateContainerComponent, {
+  openEditForm(data: any) {
+    const dialogRef = this.dialog.open(DrawerComponent, {
       width: '621px',
       height: '100%',
       maxHeight: 'none',
       position: { right: '0' },
+      data,
+    });
 
-      enterAnimationDuration,
-      exitAnimationDuration,
-
-      data: { id },
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          const index = this.collection.findIndex(
+            (emp: { id: any }) => emp.id === val.id
+          );
+          this.collection[index] = val;
+        }
+      },
     });
   }
 

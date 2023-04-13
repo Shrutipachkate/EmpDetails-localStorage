@@ -10,7 +10,7 @@
   <div class="btns">
     <input class="searchbar" type="text" placeholder="Search" name="search" />
 
-    <button class="Add-user" (click)="openDialog('0ms', '0ms')">
+    <button class="Add-user" (click)="openAddEmpForm()">
       <img [src]="addBtnImagePath" alt="addBtnImage" /> Add
     </button>
 
@@ -60,7 +60,7 @@
       <td>
         <i
           class="fa fa-edit"
-          (click)="openDialog1('0ms', '0ms', item.id)"
+          (click)="openEditForm(item)"
           style="font-size: 20px; color: rgb(186, 185, 185); margin-top: 10px"
         ></i>
       </td>

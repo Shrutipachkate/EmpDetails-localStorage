@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-// import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DetailsService } from '../details.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ValidatorFn } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+
 
 @Component({
   selector: 'app-drawer',
@@ -10,7 +15,7 @@ import { ValidatorFn } from '@angular/forms';
   styleUrls: ['./drawer.component.scss'],
 })
 export class DrawerComponent implements OnInit {
-  addDetails = new FormGroup({
+  employeeForm = new FormGroup({
     name: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -26,8 +31,7 @@ export class DrawerComponent implements OnInit {
       Validators.required,
       Validators.maxLength(10),
       Validators.minLength(10),
-      Validators.pattern(' [0-9]*'),
-      // this.indianCodeValidator,
+      Validators.pattern('[0-9]*'),
     ]),
     city: new FormControl(''),
     hometown: new FormControl(''),
@@ -35,40 +39,61 @@ export class DrawerComponent implements OnInit {
     type: new FormControl('Type', [Validators.required]),
   });
 
-
-  // indianCodeValidator(control: FormControl) {
-  //   if (control.value && !control.value.startsWith('+91')) {
-  //     return { indianCode: true };
-  //   }
-  //   return null;
-  // }
-
-  constructor(private details: DetailsService) {}
-  ngOnInit(): void {}
-  collectDetails() {
-    this.details.saveDetails(this.addDetails.value).subscribe((result) => {
-      console.warn(result);
-    });
+  constructor(
+    private fb: FormBuilder,
+    private details: DetailsService,
+    private dialogRef: MatDialogRef<DrawerComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+  ngOnInit(): void {
+    this.employeeForm.patchValue(this.data);
   }
+
+  onFormSubmit() {
+    if (this.employeeForm.valid) {
+      if (this.data) {
+        this.details
+          .updateDetails(this.data.id, this.employeeForm.value)
+          .subscribe({
+            next: (val: any) => {
+              this.dialogRef.close(true);
+            },
+            error: (err: any) => {
+              console.error(err);
+            },
+          });
+      } else {
+        this.details.saveDetails(this.employeeForm.value).subscribe({
+          next: (val: any) => {
+            this.dialogRef.close(true);
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        });
+      }
+    }
+  }
+
   get name(): FormControl {
-    return this.addDetails.get('name') as FormControl;
+    return this.employeeForm.get('name') as FormControl;
   }
 
   get role(): FormControl {
-    return this.addDetails.get('role') as FormControl;
+    return this.employeeForm.get('role') as FormControl;
   }
 
   get email(): FormControl {
-    return this.addDetails.get('email') as FormControl;
+    return this.employeeForm.get('email') as FormControl;
   }
 
   get mobile(): FormControl {
-    return this.addDetails.get('mobile') as FormControl;
+    return this.employeeForm.get('mobile') as FormControl;
   }
   get type(): FormControl {
-    return this.addDetails.get('type') as FormControl;
+    return this.employeeForm.get('type') as FormControl;
   }
   get dob(): FormControl {
-    return this.addDetails.get('dob') as FormControl;
+    return this.employeeForm.get('dob') as FormControl;
   }
 }

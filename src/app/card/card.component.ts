@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { DetailsService } from '../details.service';
-import { MainContainerComponent } from '../main-container/main-container.component';
+import { MatDialog } from '@angular/material/dialog';
+import { EmployeeObj } from '../drawer/drawer.component';
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  collection: any = [];
+  employeeForm: any = [];
+  employeeArr: EmployeeObj[] = [];
   permanentCount: number = 0;
   internCount: number = 0;
 
@@ -16,13 +17,13 @@ export class CardComponent {
   card2ImagePath: string = 'assets/card2.svg';
   card3ImagePath: string = 'assets/card3.svg';
 
-  constructor(private details: DetailsService, public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
   ngOnInit(): void {
-    this.details.getList().subscribe((result) => {
+    // this.details.getList().subscribe((result) => {
      
-      this.collection = result;
-      this.permanentCount = this.collection.filter((e: { type: string; }) => e.type === 'Permanent').length;
-      this.internCount = this.collection.filter((e: { type: string; }) => e.type === 'Intern').length;
-    });
+    //   this.collection = result;
+    //   this.permanentCount = this.collection.filter((e: { type: string; }) => e.type === 'Permanent').length;
+    //   this.internCount = this.collection.filter((e: { type: string; }) => e.type === 'Intern').length;
+    // });
   }
 }

@@ -25,7 +25,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +33,8 @@ import { MatSelectModule } from '@angular/material/select';
     CardComponent,
     MainContainerComponent,
     DrawerComponent,
+
+
   ],
   imports: [
     BrowserModule,

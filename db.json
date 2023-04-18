@@ -1,13 +1,19 @@
 {
   "employeedetails": [
     {
-      "id": 3,
-      "name": "Kathryn Murphy",
+      "name": "Onkar Chitnis",
+      "dob": "2023-04-08",
+      "lang": "",
+      "skills": "Wireframes    Prototypes",
       "role": "Software Engineer",
-      "type": "Intern",
-      "mobile": "+91 6230543723",
+      "gender": "",
       "email": "Vikas.S@iauro.com",
-      "skills": "Wireframes    Prototypes"
+      "mobile": "6230543723",
+      "city": "",
+      "hometown": "katol",
+      "address": "",
+      "type": "Intern",
+      "id": 3
     },
     {
       "id": 4,

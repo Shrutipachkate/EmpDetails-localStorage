@@ -4,7 +4,7 @@
 <div class="blank_div">
   <div class="em">
     <b>Employees </b>
-    <div class="count">{{ collection.length }}</div>
+    <div class="count">{{ employeeArr.length }}</div>
   </div>
 
   <div class="btns">
@@ -42,16 +42,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of collection">
-      <td>{{ item.name }}</td>
-      <td>{{ item.role }}</td>
-      <td>{{ item.type }}</td>
-      <td>{{ item.mobile }}</td>
-      <td>{{ item.email }}</td>
-      <td>{{ item.skills }}</td>
+    <tr *ngFor="let item of employeeArr">
+      <td>{{ item?.name }}</td>
+      <td>{{ item?.role }}</td>
+      <td>{{ item?.type }}</td>
+      <td>{{ item?.mobile }}</td>
+      <td>{{ item?.email }}</td>
+      <td>{{ item?.skills }}</td>
       <td>
         <i
-          (click)="deleteDetails(item.id)"
+          (click)="onDelete(item)"
           class="fa fa-trash"
           style="font-size: 20px; color: rgb(186, 185, 185); margin-top: 10px"
         ></i>

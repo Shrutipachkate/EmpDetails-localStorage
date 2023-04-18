@@ -1,13 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DetailsService } from '../details.service';
+
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-
+// import { NgModule } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-drawer',
@@ -36,42 +38,50 @@ export class DrawerComponent implements OnInit {
     city: new FormControl(''),
     hometown: new FormControl(''),
     address: new FormControl(''),
-    type: new FormControl('Type', [Validators.required]),
+    type: new FormControl('', [Validators.required]),
   });
+
+
+  // employeeObj: EmployeeObj;
+  // EmployeeObj: any;
+  employeeArr: EmployeeObj[] = [];
+  // employeeArr:any=[];
 
   constructor(
     private fb: FormBuilder,
-    private details: DetailsService,
+    // private details: DetailsService,
     private dialogRef: MatDialogRef<DrawerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
-  ngOnInit(): void {
-    this.employeeForm.patchValue(this.data);
+  ) {
+    // this.employeeObj = new EmployeeObj();
   }
 
+  ngOnInit(): void {
+    if (this.data && this.data.id) {
+      this.employeeForm.patchValue(this.data);
+      // console.log(this.data.id);
+    }
+  }
   onFormSubmit() {
-    if (this.employeeForm.valid) {
-      if (this.data) {
-        this.details
-          .updateDetails(this.data.id, this.employeeForm.value)
-          .subscribe({
-            next: (val: any) => {
-              this.dialogRef.close(true);
-            },
-            error: (err: any) => {
-              console.error(err);
-            },
-          });
-      } else {
-        this.details.saveDetails(this.employeeForm.value).subscribe({
-          next: (val: any) => {
-            this.dialogRef.close(true);
-          },
-          error: (err: any) => {
-            console.error(err);
-          },
-        });
-      }
+    const isData = JSON.parse(localStorage.getItem('EmpData')|| '[]') ;
+    if (this.data && this.data.id) {
+      this.employeeForm.patchValue(this.data);
+      localStorage.setItem('EmpData', JSON.stringify(isData));
+    } else {
+      // const newArr = [];
+      isData.push(this.employeeForm.value);
+      localStorage.setItem('EmpData', JSON.stringify(isData));
+    }
+    this.getAllEmployee();
+    
+  }
+
+  getAllEmployee() {
+    const isData = localStorage.getItem('EmpData');
+    if (isData != null) {
+      const localData = JSON.parse(isData);
+      this.employeeArr = localData;
+      // console.log(this.employeeArr)
     }
   }
 
@@ -96,4 +106,36 @@ export class DrawerComponent implements OnInit {
   get dob(): FormControl {
     return this.employeeForm.get('dob') as FormControl;
   }
+}
+
+export interface EmployeeObj {
+  id: number;
+  Name: string;
+  address: string;
+  dob: string;
+  email: string;
+  gender: string;
+  hometown: string;
+  lang: string;
+  mobile: string;
+  skills: string;
+  role: string;
+  type: string;
+  city: string;
+
+  // constructor() {
+  //   this.id = 0;
+  //   this.Name = ' ';
+  //   this.Address = ' ';
+  //   this.Dob = ' ';
+  //   this.Email = ' ';
+  //   this.Gender = ' ';
+  //   this.Hometown = ' ';
+  //   this.Language = ' ';
+  //   this.Mobile = ' ';
+  //   this.Skill = ' ';
+  //   this.role = ' ';
+  //   this.type = ' ';
+  //   this.city = '';
+  // }
 }

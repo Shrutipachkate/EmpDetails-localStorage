@@ -82,11 +82,13 @@
             </div>
             <div class="form-group col-md-4">
               <label class="field-label"  for="inputGender">Gender</label>
-              <select id="inputGender" class="form-control">
-                <option disabled selected>Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
+              <input
+              type="text"
+              class="form-control"
+              placeholder="Gender"
+              formControlName="gender"
+              id="inputGender"
+            />
             </div>
           </div>
         </div>
@@ -168,16 +170,13 @@
 
           <div class="form-group col-md-4">
             <label class="field-label"  for="inputType">Type</label>
-            <select
-              id="inputType"
-              class="form-control"
-              placeholder="Type"
-              required
-            >
-              <option value="option" disabled selected>Type</option>
-              <option>Intern</option>
-              <option>Permanent</option>
-            </select>
+            <input
+            type="text"
+            class="form-control"
+            placeholder="Type"
+            formControlName="type"
+            id="inputType"
+          />
 
             <span
               class="validation"
@@ -200,7 +199,7 @@
           type="submit"
           mat-raised-button
           color="primary"
-          [disabled]="employeeForm.invalid"
+          
           mat-dialog-close
 
         >
@@ -214,4 +213,3 @@
   <mat-tab label="Education & Work Experience" disabled> </mat-tab>
   <mat-tab label="Documents" disabled> Documents </mat-tab>
 </mat-tab-group>
-

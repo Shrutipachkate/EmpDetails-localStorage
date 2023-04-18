@@ -14,15 +14,40 @@ export class MainContainerComponent {
   idCardImagePath: string = 'assets/idCard.svg';
   tableImagePath: string = 'assets/table.svg';
 
-  collection: any = [];
+  // employeeObj: EmployeeObj;
+  employeeArr: EmployeeObj[] = [];
+  // employeeArr:any=[];
 
-  constructor(private details: DetailsService, public dialog: MatDialog) {}
+  constructor(private details: DetailsService, public dialog: MatDialog) {
+    // this.employeeObj = new EmployeeObj();
+  }
 
   ngOnInit(): void {
-    this.details.getList().subscribe((result) => {
-      console.warn(result);
-      this.collection = result;
-    });
+    this.getAllEmployee();
+  }
+
+  getAllEmployee() {
+    const isData = localStorage.getItem('EmpData');
+    if (isData != null) {
+      const localData = JSON.parse(isData);
+      this.employeeArr = localData;
+      console.log(this.employeeArr);
+    }
+  }
+
+  onDelete(item: EmployeeObj) {
+    const isData = localStorage.getItem('EmpData');
+    if (isData != null) {
+      const localData = JSON.parse(isData);
+      for (let index = 0; index < localData.length; index++) {
+        if (localData[index]?.id == item.id) {
+          localData.splice(index, 1);
+          break;
+        }
+      }
+      localStorage.setItem('EmpData', JSON.stringify(localData));
+      this.getAllEmployee();
+    }
   }
 
   openAddEmpForm() {
@@ -31,17 +56,17 @@ export class MainContainerComponent {
       height: '100%',
       maxHeight: 'none',
       position: { right: '0' },
-      
     });
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
-          this.collection.push(val);
+          this.employeeArr.push(val);
         }
       },
     });
   }
-  openEditForm(data: any) {
+  openEditForm(data:any) {
+    console.log(data);
     const dialogRef = this.dialog.open(DrawerComponent, {
       width: '621px',
       height: '100%',
@@ -53,19 +78,44 @@ export class MainContainerComponent {
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
-          const index = this.collection.findIndex(
-            (emp: { id: any }) => emp.id === val.id
+          const index = this.employeeArr.findIndex(
+            (emp: {id:number}) => emp.id === val.id
           );
-          this.collection[index] = val;
+          this.employeeArr[index] = val;
         }
       },
     });
   }
+}
 
-  deleteDetails(item: any) {
-    this.collection.splice(item - 1, 1);
-    this.details.deleteDetails(item).subscribe((result) => {
-      console.warn('result', result);
-    });
-  }
+export interface EmployeeObj {
+  id: number;
+  name: string;
+  address: string;
+  dob: string;
+  email: string;
+  gender: string;
+  hometown: string;
+  lang: string;
+  mobile: string;
+  skills: string;
+  role: string;
+  type: string;
+  city: string;
+
+  // constructor() {
+  //   this.id = 0;
+  //   this.Name = ' ';
+  //   this.Address = ' ';
+  //   this.Dob = ' ';
+  //   this.Email = ' ';
+  //   this.Gender = ' ';
+  //   this.Hometown = ' ';
+  //   this.Language = ' ';
+  //   this.Mobile = ' ';
+  //   this.Skill = ' ';
+  //   this.Role = ' ';
+  //   this.Type = ' ';
+  //   this.City = '';
+  // }
 }

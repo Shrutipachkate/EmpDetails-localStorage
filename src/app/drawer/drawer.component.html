@@ -199,12 +199,10 @@
           type="submit"
           mat-raised-button
           color="primary"
-          
+          [disabled]="employeeForm.invalid"
           mat-dialog-close
-
         >
           {{ data ? "Update" : "Save" }}
-          
         </button>
       </div>
     </form>

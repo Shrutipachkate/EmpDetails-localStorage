@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DetailsService } from '../details.service';
 import { DrawerComponent } from '../drawer/drawer.component';
 
 @Component({
@@ -14,13 +13,10 @@ export class MainContainerComponent {
   idCardImagePath: string = 'assets/idCard.svg';
   tableImagePath: string = 'assets/table.svg';
 
-  // employeeObj: EmployeeObj;
+ 
   employeeArr: EmployeeObj[] = [];
-  // employeeArr:any=[];
 
-  constructor(private details: DetailsService, public dialog: MatDialog) {
-    // this.employeeObj = new EmployeeObj();
-  }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getAllEmployee();
@@ -102,20 +98,4 @@ export interface EmployeeObj {
   role: string;
   type: string;
   city: string;
-
-  // constructor() {
-  //   this.id = 0;
-  //   this.Name = ' ';
-  //   this.Address = ' ';
-  //   this.Dob = ' ';
-  //   this.Email = ' ';
-  //   this.Gender = ' ';
-  //   this.Hometown = ' ';
-  //   this.Language = ' ';
-  //   this.Mobile = ' ';
-  //   this.Skill = ' ';
-  //   this.Role = ' ';
-  //   this.Type = ' ';
-  //   this.City = '';
-  // }
 }

@@ -1,15 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DetailsService } from '../details.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-// import { NgModule } from '@angular/core';
-// import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-drawer',
@@ -18,6 +10,7 @@ import {
 })
 export class DrawerComponent implements OnInit {
   employeeForm = new FormGroup({
+    id: new FormControl(),
     name: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -41,39 +34,35 @@ export class DrawerComponent implements OnInit {
     type: new FormControl('', [Validators.required]),
   });
 
-
-  // employeeObj: EmployeeObj;
-  // EmployeeObj: any;
+  EmployeeObj: any;
   employeeArr: EmployeeObj[] = [];
-  // employeeArr:any=[];
 
-  constructor(
-    private fb: FormBuilder,
-    // private details: DetailsService,
-    private dialogRef: MatDialogRef<DrawerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    // this.employeeObj = new EmployeeObj();
-  }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
-    if (this.data && this.data.id) {
-      this.employeeForm.patchValue(this.data);
-      // console.log(this.data.id);
-    }
+    this.employeeForm.patchValue(this.data);
   }
   onFormSubmit() {
-    const isData = JSON.parse(localStorage.getItem('EmpData')|| '[]') ;
+    const isData = JSON.parse(localStorage.getItem('EmpData') || '[]');
+    console.log('this.data', this.data);
     if (this.data && this.data.id) {
-      this.employeeForm.patchValue(this.data);
-      localStorage.setItem('EmpData', JSON.stringify(isData));
+      const updatedData = isData.map((item: any) => {
+        if (item.id === this.data.id) {
+          item = this.employeeForm.value;
+          item['id'] = this.data.id;
+        }
+        return item;
+      });
+      localStorage.setItem('EmpData', JSON.stringify(updatedData));
     } else {
-      // const newArr = [];
-      isData.push(this.employeeForm.value);
+      let newData = { ...this.employeeForm.value };
+      const lastId = localStorage.getItem('lastId') || '0';
+      const newId = parseInt(lastId, 10) + 1;
+      newData.id = newId;
+      localStorage.setItem('lastId', newId.toString());
+      isData.push(newData);
       localStorage.setItem('EmpData', JSON.stringify(isData));
     }
-    this.getAllEmployee();
-    
   }
 
   getAllEmployee() {
@@ -81,10 +70,8 @@ export class DrawerComponent implements OnInit {
     if (isData != null) {
       const localData = JSON.parse(isData);
       this.employeeArr = localData;
-      // console.log(this.employeeArr)
     }
   }
-
   get name(): FormControl {
     return this.employeeForm.get('name') as FormControl;
   }
@@ -122,20 +109,4 @@ export interface EmployeeObj {
   role: string;
   type: string;
   city: string;
-
-  // constructor() {
-  //   this.id = 0;
-  //   this.Name = ' ';
-  //   this.Address = ' ';
-  //   this.Dob = ' ';
-  //   this.Email = ' ';
-  //   this.Gender = ' ';
-  //   this.Hometown = ' ';
-  //   this.Language = ' ';
-  //   this.Mobile = ' ';
-  //   this.Skill = ' ';
-  //   this.role = ' ';
-  //   this.type = ' ';
-  //   this.city = '';
-  // }
 }
